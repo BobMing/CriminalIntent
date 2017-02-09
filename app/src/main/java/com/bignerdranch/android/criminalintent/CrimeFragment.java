@@ -28,7 +28,7 @@ public class CrimeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCrime = new Crime();
-        mCrime.setDate(new Date()); // The Book forgot this causing a error
+        mCrime.setDate(new Date()); // The Book forgot this causing an error
     }
 
     @Override
