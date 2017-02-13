@@ -24,14 +24,25 @@ public class CrimeLab {
 
     private CrimeLab(Context context) {
         mCrimes = new ArrayList<>();
-        // 生成100个crime
-        for (int i = 0; i < 100; i++) {
-            Crime crime = new Crime();
-            crime.setTitle("Crime #" + i);
-            crime.setDate(new Date());      // The Book forgot this causing an error
-            crime.setSolved(i % 2 == 0);    // Every other one
-            mCrimes.add(crime);
+//        // 生成100个crime
+//        for (int i = 0; i < 100; i++) {
+//            Crime crime = new Crime();
+//            crime.setTitle("Crime #" + i);
+//            crime.setDate(new Date());      // The Book forgot this causing an error
+//            crime.setSolved(i % 2 == 0);    // Every other one
+//            mCrimes.add(crime);
+//        }
+    }
+
+    public void addCrime(Crime c) {
+        mCrimes.add(c);
+    }
+
+    public void deleteCrime(Crime c) {
+        if (c == null) {
+            return ;
         }
+        mCrimes.remove(c);
     }
 
     public List<Crime> getCrimes() {
