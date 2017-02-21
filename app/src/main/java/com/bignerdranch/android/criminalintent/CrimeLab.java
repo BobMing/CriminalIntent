@@ -118,6 +118,7 @@ public class CrimeLab {
 
     public File getPhotoFile(Crime crime) {
         File externalFileDir = mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+//        File externalFileDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
         if (externalFileDir == null) {
             return null;

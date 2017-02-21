@@ -94,7 +94,7 @@ public class CrimeFragment extends Fragment {
 //        mCrime = new Crime();
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
-        mCrime.setDate(new Date()); // The Book forgot this causing an error
+//        mCrime.setDate(new Date()); // The Book forgot this causing an error
         mPhotoFile = CrimeLab.get(getActivity()).getPhotoFile(mCrime);
     }
 
@@ -379,7 +379,14 @@ public class CrimeFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.menu_item_del_crime:
                 CrimeLab.get(getActivity()).deleteCrime(mCrime);
-                getActivity().finish();
+                // 单/双页模式时，删除后处理不同
+                if (getActivity().findViewById(R.id.two_pane_layout) == null) {
+                    getActivity().finish();
+                } else {
+                    mCallbacks.onCrimeUpdated(null);
+                    getActivity().getSupportFragmentManager().popBackStack();
+                }
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
